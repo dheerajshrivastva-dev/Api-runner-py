@@ -7,8 +7,8 @@ from openpyxl.styles import PatternFill, Font
 
 
 proxies = {
-    'http': 'http://localhost:8080',
-    'https': 'http://localhost:8080',
+    'http': 'http://localhost:4000',
+    'https': 'http://localhost:4000',
 }
 
 # api_list = [{'name': 'catfact.ninja', 'url': 'https://catfact.ninja/fact', 'freq': 1},
@@ -21,7 +21,7 @@ api_list = [{'name': 'localhost', 'url': 'https://127.0.0.1:3000/test', 'freq': 
 
 workbook = openpyxl.Workbook()
 sheet = workbook.active
-sheet.append(['API Name', 'Response Code', 'Response Time (ms) HLL', 'Status', 'Extra Details'])
+sheet.append(['API Name', 'Response Code', 'Response Time (ms) SORTED SET', 'Status', 'Extra Details'])
 
 total_requests = sum(api['freq'] for api in api_list)
 
@@ -81,7 +81,7 @@ for key, value in success_count.items():
     cell = sheet.cell(row=sheet.max_row, column=4)
     cell.font = Font(bold=True)
 
-report_filename = f"HLL_local_{datetime.now().strftime('%Y-%m-%d_%H-%M-%S')}.xlsx"
+report_filename = f"SORTEDSET_loc_{datetime.now().strftime('%Y-%m-%d_%H-%M-%S')}.xlsx"
 workbook.save(report_filename)
 
 print("Testing completed. Report saved as:", report_filename)

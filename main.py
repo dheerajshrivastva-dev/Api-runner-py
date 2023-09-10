@@ -67,6 +67,15 @@ def start_application():
         subprocess.run([python_executable, "index.py"], check=True)
     except subprocess.CalledProcessError:
         print("\033[91mError: Failed to start the Python application.\033[0m")
+    
+    # Start your Python application
+    try:
+        print('I am try to run this')
+        subprocess.run([python_executable, "index2.py"], check=True)
+    except subprocess.CalledProcessError:
+        print("\033[91mError: Failed to start the Python application.\033[0m")
 
 if __name__ == "__main__":
     start_application()
+
+
